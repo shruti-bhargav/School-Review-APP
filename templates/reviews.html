@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+   
+    <title> ALL SCHOOL REVIEWs</title>
+    <link rel=""stylesheet" href="https://cdn.jsdelivr.net/npm/bpptstrap@5.3.0/dist/css/bootstrap.min.css">
+    </head>
+    <body class ="container mt-5">
+        <h2> All Submitted School Reviews</h2>
+        <a href ="/" class="btn btn-secondary mb-3">Submit Another Review</a>
+        < table class =" table table-bordered">
+    <thead>
+        <tr>
+            <th>SCHOOL NAME </th>
+            <th>RATING</th>
+            <th>REVIEW</th>
+        </tr>
+    </thead>
+<tbody>
+    {% for review in reviews%}
+    <tr>
+        <td> {{ review[1] }}</td>
+        <td> {{ review[2] }}</td>
+        <td> {{ review[3] }}</td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+</body>
+</html>
