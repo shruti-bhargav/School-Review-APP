@@ -1,8 +1,6 @@
 # SCHOOL REVIEW MANAGER
 
-A Flask web application that allows the user to actually submit a school review ans also view it.
-the reviews are stored in a MYSQL DATABASE that uses BOOTSTRAP for a clean UI.
-
+A Dynamic web application built with python FLASK AND MYSQL to collect and display review of schools. Integrated Bootstrap for clean UI and used jinja templating to render submitted reviews. Designed full CRUD flow for reviews using HTML forms and SQL database connectivity.
 
 # TECH STACK
 --PYTHON
