@@ -11,5 +11,3 @@ A Dynamic web application built with python FLASK AND MYSQL to collect and displ
 --BOOTSTRAP
 
 
-#RUNNING OF THE PROJECT
-pip install-r requirements.txt
