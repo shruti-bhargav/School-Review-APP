@@ -48,6 +48,23 @@ def review():
 
 
 
+@app.route('/search')
+def search_review():
+    query = request.args.get('query', '').strip()
+    if not query:
+        return redirect('/review')
+
+    sql = """ SELECT * FROM reviews WHERE LOWER(school_name) LIKE LOWER(%s) OR LOWER(email) LIKE LOWER(%s) ORDER BY id DESC """
+    like_param = '%' + query + '%'
+    cursor.execute(sql, (like_param, like_param))
+    all_reviews = cursor.fetchall()
+    return render_template('reviews.html', all_reviews=all_reviews)
+
+
+
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
 

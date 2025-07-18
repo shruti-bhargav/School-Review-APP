@@ -6,7 +6,13 @@
 </head>
 <body class="container mt-5">
     <h2 class="mb-4">ALL SUBMITTED SCHOOL REVIEW</h2>
+    <form method="GET" action="/search">
+        <input type="text" name="query" placeholder="Search by school name ">
+        <button type = "submit" , class="btn btn-primary ms-2"> Search</button>
+
+    </form>
     <a href="/" class="btn btn-primary mb-4">SUBMIT ANOTHER REVIEW</a>
+
 
     {% if all_reviews %}
         <div class="row">
