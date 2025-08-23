@@ -1,17 +1,16 @@
 # 🏫 School Review Web App
 
-This is a full-stack web application where users can submit and read reviews about schools. The application allows users to add a new review, search for reviews based on the school's name, and view a list of all submitted reviews.
+This is a full-stack web application where users can submit and read reviews about schools. The application allows users to add a new review,edit and delete their reviews and view a list of all submitted reviews.
 
 ---
 
 ## 🚀 Features
 
-- ✅ Submit a new school review with rating (stars), name, email, and comments
+- ✅ Submit a new school review with rating (stars), name, email, and review
 - ✅ Prevents empty form submissions
 - ✅ Stores all reviews in a MySQL database
-- ✅ Search bar to find reviews by **school name**
 - ✅ Displays all reviews submitted
-- 🔒  Edit and delete functionality for reviews
+- 🔒 Edit and delete functionality for reviews
 - 📱 Responsive frontend with user-friendly interface
 
 ---
@@ -26,6 +25,8 @@ This is a full-stack web application where users can submit and read reviews abo
 ---
 
 ## 📸 Screenshots
-
-ss1.png ![alt text](ss1.png)
-ss2.png![alt text](ss2.png)
+![All reviews](image.png)
+![Add a review page](image-1.png)
+![Edit review page](image-2.png)
+![Edited review](image-3.png)
+![Delete review](image-4.png)
