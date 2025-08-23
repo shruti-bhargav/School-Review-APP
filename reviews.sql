@@ -7,5 +7,6 @@ CREATE TABLE reviews (
     school_name VARCHAR(255) NOT NULL,
     rating VARCHAR(10) NOT NULL,
     review_text TEXT NOT NULL,
-    date_submitted DATETIME DEFAULT CURRENT_TIMESTAMP
+    date_submitted DATETIME DEFAULT CURRENT_TIMESTAMP,
+    delete_code VARCHAR(32)  -- ← ADD THIS LINE!
 );

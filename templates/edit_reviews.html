@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Review</h2>
+<form method="post">
+  <div class="mb-3">
+    <label class="form-label">School Name</label>
+    <input type="text" class="form-control" name="school_name" value="{{ review.school_name }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Your Full Name</label>  <!-- Updated label -->
+    <input type="text" class="form-control" name="full_name" value="{{ review.full_name }}" required>  <!-- Changed to full_name -->
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" name="email" value="{{ review.email }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Rating</label><br>
+    <div class="star-rating">
+    <input type="radio" id="star5" name="rating" value="1"><label for="star1">⭐</label>
+    <input type="radio" id="star4" name="rating" value="2"><label for="star2">⭐⭐</label>
+    <input type="radio" id="star3" name="rating" value="3"><label for="star3">⭐⭐⭐</label>
+    <input type="radio" id="star2" name="rating" value="4"><label for="star4">⭐⭐⭐⭐</label>
+    <input type="radio" id="star1" name="rating" value="5"><label for="star5">⭐⭐⭐⭐⭐</label>
+  </div
+  <div class="mb-3">
+    <label class="form-label">Review</label>
+    <textarea class="form-control" name="review_text" rows="4" required>{{ review.review_text }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock %}

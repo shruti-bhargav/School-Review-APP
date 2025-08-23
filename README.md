@@ -11,7 +11,7 @@ This is a full-stack web application where users can submit and read reviews abo
 - ✅ Stores all reviews in a MySQL database
 - ✅ Search bar to find reviews by **school name**
 - ✅ Displays all reviews submitted
-- 🔒 (Planned) Edit and delete functionality for reviews
+- 🔒  Edit and delete functionality for reviews
 - 📱 Responsive frontend with user-friendly interface
 
 ---

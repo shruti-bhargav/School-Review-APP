@@ -1,71 +1,89 @@
-
-
-
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
-import config
 
 app = Flask(__name__)
+app.secret_key = "supersecretkey"
 
+# --- Database Connection ---
+def get_db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",       
+        password="shruti",       
+        database="school_reviews"
+    )
 
-db = mysql.connector.connect(
-    host=config.DB_HOST,
-    user=config.DB_USER,
-    password=config.DB_PASSWORD,
-    database=config.DB_NAME
-)
-cursor = db.cursor()
-
+# --- Home Page / List All Reviews ---
 @app.route('/')
-def home():
-    return render_template("add_review.html", all_reviews=[])
-
-@app.route('/submit/', methods=["POST"])
-def submit():
-    full_name = request.form['full_name']
-    email = request.form['email']
-    school = request.form['school']
-    rating = request.form['rating']
-    review = request.form['review']
-
-    query = "INSERT INTO reviews (full_name, email,school_name, rating, review_text) VALUES (%s, %s, %s,%s,%s)"
-    values = (full_name, email, school, rating, review)
-    cursor.execute(query, values)
-    db.commit()
-    print("Form submitted")
-    return redirect('/review')
-
-
-
-@app.route("/review")
-def review():
+def index():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
     cursor.execute("SELECT * FROM reviews ORDER BY id DESC")
+    reviews = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return render_template('reviews.html', reviews=reviews)
 
-    
-    all_reviews = cursor.fetchall()
-    return render_template("reviews.html", all_reviews=all_reviews)
+# --- Add Review ---
+@app.route("/add", methods=["GET", "POST"])
+def add_review():
+    if request.method == "POST":
+        school_name = request.form["school_name"]
+        full_name = request.form["full_name"]  # Changed to full_name
+        rating = request.form["rating"]
+        email = request.form["email"]
+        review_text = request.form["review_text"]
 
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO reviews (school_name, full_name, rating, email, review_text) VALUES (%s, %s, %s, %s, %s)",
+            (school_name, full_name, rating, email, review_text)  # Changed to full_name
+        )
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return redirect(url_for("index"))
+    return render_template("add_review.html")
 
+# --- Edit Review ---
+@app.route("/edit/<int:review_id>", methods=["GET", "POST"])
+def edit_review(review_id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
 
+    if request.method == "POST":
+        school_name = request.form["school_name"]
+        full_name = request.form["full_name"]  # Changed to full_name
+        rating = request.form["rating"]
+        email = request.form["email"]
+        review_text = request.form["review_text"]
 
-@app.route('/search')
-def search_review():
-    query = request.args.get('query', '').strip()
-    if not query:
-        return redirect('/review')
+        cursor.execute(
+            "UPDATE reviews SET school_name=%s, full_name=%s, rating=%s, email=%s, review_text=%s WHERE id=%s",
+            (school_name, full_name, rating, email, review_text, review_id)  # Changed to full_name
+        )
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return redirect(url_for("index"))
 
-    sql = """ SELECT * FROM reviews WHERE LOWER(school_name) LIKE LOWER(%s) OR LOWER(email) LIKE LOWER(%s) ORDER BY id DESC """
-    like_param = '%' + query + '%'
-    cursor.execute(sql, (like_param, like_param))
-    all_reviews = cursor.fetchall()
-    return render_template('reviews.html', all_reviews=all_reviews)
+    cursor.execute("SELECT * FROM reviews WHERE id=%s", (review_id,))
+    review = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return render_template("edit_reviews.html", review=review)
 
-
-
-
-
+# --- Delete Review ---
+@app.route("/delete/<int:review_id>", methods=["POST"])
+def delete_review(review_id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM reviews WHERE id=%s", (review_id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect(url_for("index"))
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-
