@@ -28,32 +28,32 @@ This is a full-stack web application where users can submit and read reviews abo
 
 ### 📝 All Reviews Page
 This page displays all the reviews submitted by the user in a clean list format.
-<img src="image.png" alt="All reviews" width="400">
+<img src="image.png" alt="All reviews" width="500">
 
 ---
 
 ### ➕ Add a Review Page
 Here, the user can submit a new review by filling in the form.  
 In this example, the review is for *Little Flower Public School*.
-<img src="image-1.png" alt="Add review page" width="400">
+<img src="image-1.png" alt="Add review page" width="500">
 
 ---
 
 ### ✏ Edit Review Page
 Existing reviews can be updated by editing them here.  
 In this screenshot, the *number of stars* for the review has been changed.
-<img src="image-2.png" alt="Edit review page" width="400">
+<img src="image-2.png" alt="Edit review page" width="500">
 
 ---
 
 ### ✅ Edited Review Confirmation
 After updating a review, the changes are shown on this page.  
 Here, the stars were updated from *5 to 4*.
-<img src="image-3.png" alt="Edited review" width="400">
+<img src="image-3.png" alt="Edited review" width="500">
 
 ---
 
 ### ❌ Delete Review Page
 This page shows a deleted review.  
 In this case, the review for *Little Flower Public School* has been removed.
-<img src="image-4.png" alt="Delete review" width="400">
+<img src="image-4.png" alt="Delete review" width="500">
