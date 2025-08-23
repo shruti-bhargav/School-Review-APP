@@ -25,8 +25,18 @@ This is a full-stack web application where users can submit and read reviews abo
 ---
 
 ## 📸 Screenshots
-![All reviews](image.png)
-![Add a review page](image-1.png)
-![Edit review page](image-2.png)
-![Edited review](image-3.png)
-![Delete review](image-4.png)
+
+### 📝 All Reviews
+<img src="image.png" alt="All reviews" width="600">
+
+### ➕ Add a Review Page
+<img src="image-1.png" alt="Add review page" width="600">
+
+### ✏ Edit Review Page
+<img src="image-2.png" alt="Edit review page" width="600">
+
+### ✅ Edited Review
+<img src="image-3.png" alt="Edited review" width="600">
+
+### ❌ Delete Review
+<img src="image-4.png" alt="Delete review" width="600">
