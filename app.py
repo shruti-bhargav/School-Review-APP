@@ -1,23 +1,29 @@
 from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 import os
-import random
-import string
+from urllib.parse import urlparse
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
-port=int(os.environ.get("PORT", "5000"))
+
 
 # --- Database Connection ---
+
+from urllib.parse import urlparse
+
 def get_db_connection():
+    # Parse the DATABASE_URL
+    url = urlparse(os.environ.get("DATABASE_URL"))
+    
     return mysql.connector.connect(
-        host=os.environ.get("MYSQLHOST", "localhost"),
-        user=os.environ.get("MYSQLUSER", "root"),
-        password=os.environ.get("MYSQLPASSWORD", "shruti"),
-        database=os.environ.get("MYSQLDATABASE", "school_reviews"),
-        port=int(os.environ.get("MYSQLPORT", 3306))
+        host=url.hostname,
+        user=url.username,
+        password=url.password,
+        database=url.path[1:],  # remove leading /
+        port=url.port
     )
+
 
 
 # --- Home Page / List All Reviews ---
