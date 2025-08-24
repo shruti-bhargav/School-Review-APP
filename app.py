@@ -1,20 +1,22 @@
 from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector
 import os
+import random
+import string
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
-db_url= os.environ.get("MYSQL_MYSQL_URL")
+
 port=int(os.environ.get("PORT, 5000"))
 
 # --- Database Connection ---
 def get_db_connection():
     return mysql.connector.connect(
-        host=os.environ.get("MYSQLHOST"),
-        user=os.environ.get("MYSQLUSER"),       
-        password=os.environ.get("MYSQLPASSWORD"),       
-        database=os.environ.get("MYSQLDATABASE"),
-        port=int(os.environ.get("MYSQLPORT"))
+        host=os.environ.get("MYSQLHOST" , "localhost"),
+        user=os.environ.get("MYSQLUSER" . "root"),       
+        password=os.environ.get("MYSQLPASSWORD" , "shruti"),       
+        database=os.environ.get("MYSQLDATABASE" , "school_reviews"),
+        port=int(os.environ.get("MYSQLPORT" , 3306))
     )
 
 # --- Home Page / List All Reviews ---
@@ -90,4 +92,5 @@ def delete_review(review_id):
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
+    port=int(os.environ.get("PORT" , 5000))
     app.run(host="0.0.0.0" , port=port , debug=True)
