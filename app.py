@@ -20,10 +20,28 @@ def get_db_connection():
         host=url.hostname,
         user=url.username,
         password=url.password,
-        database=url.path[1:],  # remove leading /
+        database=url.path[1:],  
         port=url.port
     )
 
+def init_db():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS reviews (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            school_name VARCHAR(255) NOT NULL,
+            full_name VARCHAR(255) NOT NULL,
+            rating INT NOT NULL,
+            email VARCHAR(255),
+            review_text TEXT
+        )
+    """)
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+init_db()
 
 
 # --- Home Page / List All Reviews ---
