@@ -13,7 +13,7 @@ port=int(os.environ.get("PORT, 5000"))
 def get_db_connection():
     return mysql.connector.connect(
         host=os.environ.get("MYSQLHOST" , "localhost"),
-        user=os.environ.get("MYSQLUSER" . "root"),       
+        user=os.environ.get("MYSQLUSER" , "root"),       
         password=os.environ.get("MYSQLPASSWORD" , "shruti"),       
         database=os.environ.get("MYSQLDATABASE" , "school_reviews"),
         port=int(os.environ.get("MYSQLPORT" , 3306))
