@@ -7,7 +7,7 @@ import string
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
-port=int(os.environ.get("PORT, 5000"))
+port=int(os.environ.get("PORT", "5000"))
 
 # --- Database Connection ---
 def get_db_connection():
@@ -16,7 +16,7 @@ def get_db_connection():
         user=os.environ.get("MYSQLUSER" , "root"),       
         password=os.environ.get("MYSQLPASSWORD" , "shruti"),       
         database=os.environ.get("MYSQLDATABASE" , "school_reviews"),
-        port=int(os.environ.get("MYSQLPORT" , 3306))
+        port=int(os.environ.get("MYSQLPORT" , "3306"))
     )
 
 # --- Home Page / List All Reviews ---
