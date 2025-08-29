@@ -2,7 +2,10 @@
 
 This is a full-stack web application where users can submit and read reviews about schools. The application allows users to add a new review,edit and delete their reviews and view a list of all submitted reviews.
 
-LIVE LINK : https://school-review-app-production.up.railway.app/
+## 🚀 Live Link
+🔗 [View SCHOOL REVIEW APP]( https://school-review-app-production.up.railway.app/)
+
+
 
 
 ## 🚀 Features
